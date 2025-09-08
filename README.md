@@ -2,7 +2,7 @@
 
 A theme for qBittorrent, using `Segoe UI` and `Microsoft YaHei UI`.
 
-Display CJK characters for users using English systems.
+Improved display of CJK characters for users using English Windows.
 
 ## Usage
 
