@@ -31,16 +31,16 @@ if not args.output.endswith('.qbtheme'):
 
 if os.path.exists(args.output):
     print("WARNING! %s already exists. overwriting" % (args.output))
-    
+
 
 files = allFiles(os.path.join(args.baseDir, '*'))
 if args.findFiles:
     print('finding files')
     args.files = []
     stylesheet = open(os.path.join(args.baseDir, args.style)).read()
-    for f in re.findall(':\/uitheme\/(.*)\)', stylesheet):
+    for f in re.findall(r':\/uitheme\/(.*)\)', stylesheet):
         args.files.append(f)
-    
+
 config_file = None
 if args.config:
     if os.path.exists(args.config):
@@ -56,7 +56,7 @@ for f in files:
             ResourceFiles.append((alias, f))
             print('adding ' + f)
             break
-            
+
 IconFiles = list() if not args.iconsDir else [f for f in glob.glob(os.path.join(args.iconsDir, '*'))]
 print(IconFiles)
 

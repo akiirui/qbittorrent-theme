@@ -1,0 +1,25 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    name: Build and Publish
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Build theme
+        run: |
+          python make-resource.py -find-files -style src\theme\style.qss -output theme
+
+      - name: Publish
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "theme.qbtheme"
+          generateReleaseNotes: true
